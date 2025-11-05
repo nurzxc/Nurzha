@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CYBER NURZXC LAB 2.1 | Neo-Holo Interface</title>
+<title>CYBER NURZXC LAB 2.2 | Neo-Holo Interface</title>
 
 <!-- Fonts & Libraries -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -12,7 +12,6 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 
 <style>
-/* ===== Root Variables ===== */
 :root {
   --bg-dark: #030014;
   --bg-light: #e6f4ff;
@@ -25,7 +24,6 @@
   --text-light: #081018;
 }
 
-/* ===== Global Styles ===== */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -60,9 +58,13 @@ a:hover { text-decoration: underline; }
   align-items: center;
   z-index: 9999;
   font-size: 1.2rem;
+  transition: opacity 1s ease;
 }
 #boot span { display:block; margin: 4px; }
-.hidden { display: none; }
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* ===== Neon Rain (canvas) ===== */
 #neonRain {
@@ -239,7 +241,7 @@ footer {
 
 <!-- ===== HERO ===== -->
 <div class="hero" data-aos="zoom-in">
-  <h1>CYBER NURZXC LAB 2.1</h1>
+  <h1>CYBER NURZXC LAB 2.2</h1>
   <p>AI • Automation • Future Systems</p>
 </div>
 
@@ -297,23 +299,27 @@ footer {
 <footer>© 2077 — Nurzxc Cyber Division // Active Node_#413</footer>
 
 <script>
-/* ===== Boot Intro Sequence ===== */
+/* ===== Boot Intro Fix ===== */
 window.addEventListener('load', () => {
   const boot = document.getElementById('boot');
-  setTimeout(()=> boot.classList.add('hidden'), 3500);
+  setTimeout(() => {
+    boot.style.opacity = '0';
+    boot.style.transition = 'opacity 1s ease';
+    setTimeout(() => boot.remove(), 1000);
+  }, 2500);
 });
 
 /* ===== Theme Switch ===== */
 function toggleTheme(){ document.body.classList.toggle('light'); }
 
-/* ===== Modal Functions ===== */
+/* ===== Modal ===== */
 function openModal(title){
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modal').style.display='flex';
 }
 function closeModal(){ document.getElementById('modal').style.display='none'; }
 
-/* ===== AI Function ===== */
+/* ===== AI Terminal ===== */
 async function askAI(){
   const prompt = document.getElementById("prompt").value;
   const out = document.getElementById("aiResponse");
@@ -367,8 +373,7 @@ const c = document.getElementById("neonRain");
 const ctx = c.getContext("2d");
 c.height = window.innerHeight;
 c.width = window.innerWidth;
-let chars = "01ΩΞΦΣΨΛ";
-chars = chars.split("");
+let chars = "01ΩΞΦΣΨΛ".split("");
 let font_size = 14;
 let columns = c.width / font_size;
 let drops = [];
