@@ -3,216 +3,321 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CYBER NURZXC LAB 2.0 | Neo-Holo Interface</title>
+<title>CYBER NURZXC LAB 2.1 | Neo-Holo Interface</title>
+
+<!-- Fonts & Libraries -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
-
+/* ===== Root Variables ===== */
 :root {
-  --bg-dark: #050510;
-  --bg-light: #e8f4ff;
-
-  --glass-dark: rgba(0, 10, 30, 0.55);
-  --glass-light: rgba(255, 255, 255, 0.6);
-
-  --border-neon: rgba(0,255,255,0.5);
-  --cyan: #00eaff;
+  --bg-dark: #030014;
+  --bg-light: #e6f4ff;
+  --glass-dark: rgba(0, 15, 40, 0.55);
+  --glass-light: rgba(255, 255, 255, 0.7);
+  --cyan: #00f5ff;
   --pink: #ff37c7;
   --green: #2fff95;
-  --light-text: #0b0f15;
-  --dark-text: #c8f7ff;
+  --text-dark: #d6f8ff;
+  --text-light: #081018;
 }
 
+/* ===== Global Styles ===== */
 body {
+  margin: 0;
   font-family: 'Inter', sans-serif;
   background: var(--bg-dark);
-  color: var(--dark-text);
-  margin: 0; padding: 0;
-  transition: .4s ease-in-out;
+  color: var(--text-dark);
+  overflow-x: hidden;
+  transition: background .4s, color .4s;
   text-align: center;
 }
-
-/* LIGHT MODE */
 body.light {
   background: var(--bg-light);
-  color: var(--light-text);
+  color: var(--text-light);
 }
 
-/* HERO */
+h1, h2 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+a { color: var(--cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ===== Boot Intro ===== */
+#boot {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  color: #00ffea;
+  font-family: 'Share Tech Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-size: 1.2rem;
+}
+#boot span { display:block; margin: 4px; }
+.hidden { display: none; }
+
+/* ===== Neon Rain (canvas) ===== */
+#neonRain {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -2;
+  background: radial-gradient(circle at bottom, #02000a 0%, #000 80%);
+}
+
+/* ===== Hero Section ===== */
 .hero {
-  padding: 90px 20px 40px;
-  background: linear-gradient(145deg, #00111c, #08001a, #001e1e);
-  box-shadow: inset 0 0 150px rgba(0,255,255,0.2);
-  backdrop-filter: blur(14px);
+  padding: 100px 20px 40px;
+  background: linear-gradient(145deg, #00111c, #090021, #001e1e);
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 0 120px rgba(0,255,255,0.2);
   animation: glow 6s infinite alternate;
 }
-
 @keyframes glow {
-  0% {box-shadow: inset 0 0 60px rgba(0,255,255,0.2);}
-  100% {box-shadow: inset 0 0 160px rgba(255,0,255,0.3);}
+  0% { box-shadow: inset 0 0 60px rgba(0,255,255,0.2); }
+  100% { box-shadow: inset 0 0 150px rgba(255,0,255,0.25); }
 }
-
 .hero h1 {
-  font-family: 'Orbitron';
   font-size: 3rem;
-  margin-bottom: 10px;
   background: linear-gradient(90deg, var(--cyan), var(--pink));
   -webkit-background-clip: text;
   color: transparent;
 }
+.hero p { margin-top: 8px; }
 
-/* PROFILE */
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: -40px;
-}
-.profile img {
-  width: 140px; height: 140px;
+/* ===== Avatar (3D canvas) ===== */
+#avatar3D {
+  width: 220px; height: 220px;
+  margin: 30px auto;
   border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--cyan);
-  box-shadow: 0 0 20px var(--cyan);
+  box-shadow: 0 0 25px var(--cyan);
 }
 
-/* SECTIONS */
+/* ===== Section Style ===== */
 section {
-  width: 90%; max-width: 900px; margin: 40px auto;
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
   padding: 25px;
   border-radius: 14px;
   background: var(--glass-dark);
   backdrop-filter: blur(12px);
-  border: 1px solid var(--border-neon);
+  border: 1px solid rgba(0,255,255,0.3);
   animation: fadeIn .6s ease;
 }
 body.light section {
   background: var(--glass-light);
-  border: 1px solid rgba(0,0,0,0.2);
+  border-color: rgba(0,0,0,0.2);
+}
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(10px);}
 }
 
-/* GRID */
+/* ===== Gallery ===== */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
   gap: 12px;
 }
 .gallery img {
-  width: 100%; border-radius: 10px;
-  transition: .3s; cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+  transition: .3s;
 }
-.gallery img:hover { transform: scale(1.05); }
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px var(--pink);
+}
 
-/* ACHIEVEMENTS */
+/* ===== Achievements ===== */
 .achievements {
-  display: flex; flex-wrap: wrap;
-  gap: 15px; justify-content: center;
+  display: flex; flex-wrap: wrap; gap: 15px;
+  justify-content: center;
 }
 .ach {
-  padding: 15px 20px;
-  border-radius: 10px;
+  padding: 16px 22px;
   border: 1px solid var(--cyan);
+  border-radius: 10px;
   background: rgba(0,255,255,0.08);
   font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+.ach:hover {
+  transform: scale(1.05);
+  background: rgba(255,0,255,0.1);
 }
 
-/* AI terminal */
+/* ===== Modal ===== */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right:0; bottom:0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #01010f;
+  color: var(--cyan);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid var(--pink);
+  width: 80%; max-width: 400px;
+}
+
+/* ===== AI Terminal ===== */
 textarea {
-  width: 100%; border-radius: 8px;
-  background: #000; color: var(--green);
-  padding: 10px; min-height: 80px;
+  width: 100%;
+  border-radius: 8px;
+  background: #000;
+  color: var(--green);
+  padding: 10px;
+  min-height: 80px;
 }
 pre {
-  background: #000; padding: 15px;
+  background: #000;
   color: var(--cyan);
+  padding: 15px;
   border-radius: 8px;
   min-height: 100px;
+  text-align: left;
+  overflow-x: auto;
 }
 
-/* BUTTONS */
+/* ===== Buttons ===== */
 button {
   background: linear-gradient(90deg, var(--cyan), var(--pink));
-  border: none; color: #000;
+  border: none;
+  color: #000;
   padding: 12px 24px;
   font-weight: 700;
   border-radius: 8px;
-  cursor: pointer; margin-top: 10px;
+  cursor: pointer;
   transition: .2s;
 }
 button:hover { transform: scale(1.06); }
 
-/* THEME SWITCH */
 .themeBtn {
   position: fixed; top: 15px; right: 15px;
-  padding: 12px 20px;
-  font-weight: 700; z-index: 999;
+  z-index: 10;
 }
 
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(10px);}
+/* ===== Footer ===== */
+footer {
+  margin-top: 50px;
+  padding: 20px;
+  font-size: .9rem;
+  opacity: 0.7;
 }
 </style>
 </head>
 
 <body>
 
+<!-- ===== Hacker Boot Intro ===== -->
+<div id="boot">
+  <span>> Initializing system...</span>
+  <span>> Loading neural interface...</span>
+  <span>> Connecting to NURZXC mainframe...</span>
+  <span>> Access granted.</span>
+</div>
+
+<!-- ===== Neon Rain Background ===== -->
+<canvas id="neonRain"></canvas>
+
+<!-- ===== Theme Button ===== -->
 <button class="themeBtn" onclick="toggleTheme()">🌓 MODE</button>
 
-<div class="hero">
-  <h1>CYBER NURZXC LAB 2.0</h1>
+<!-- ===== HERO ===== -->
+<div class="hero" data-aos="zoom-in">
+  <h1>CYBER NURZXC LAB 2.1</h1>
   <p>AI • Automation • Future Systems</p>
 </div>
 
-<div class="profile">
-  <img src="avatar.jpg" alt="Profile Photo">
-  <p><b>Cyber Architect & Automation Engineer</b></p>
-</div>
+<!-- ===== 3D HOLO-AVATAR ===== -->
+<div id="avatar3D"></div>
 
-<section>
+<!-- ===== ABOUT ===== -->
+<section data-aos="fade-up">
   <h2>🧠 About</h2>
-  <p>Building neural workflows, automation systems & AI-powered bots.</p>
+  <p>Exploring neural workflows, building smart automation bots, and merging code with creativity. Welcome to the lab of tomorrow.</p>
 </section>
 
-<section>
+<!-- ===== ACHIEVEMENTS ===== -->
+<section data-aos="fade-up">
   <h2>🏆 Achievements</h2>
   <div class="achievements">
-    <div class="ach">🚀 Built AI Automation Lab</div>
-    <div class="ach">🤖 Trained LLM Bots</div>
-    <div class="ach">🧩 n8n Architect</div>
-    <div class="ach">🏅 Hackathon CyberOps</div>
+    <div class="ach" onclick="openModal('Built AI Automation Lab')">🚀 Built AI Automation Lab</div>
+    <div class="ach" onclick="openModal('Trained LLM Chatbots')">🤖 Trained LLM Chatbots</div>
+    <div class="ach" onclick="openModal('n8n Master Architect')">🧩 n8n Master Architect</div>
+    <div class="ach" onclick="openModal('CyberOps Hackathon Winner')">🏅 CyberOps Hackathon Winner</div>
   </div>
 </section>
 
-<section>
-  <h2>📸 Vault — Gallery</h2>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h3 id="modalTitle"></h3>
+    <p>Achievement unlocked in the Cyber Division Database.</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<!-- ===== GALLERY ===== -->
+<section data-aos="fade-up">
+  <h2>📸 Vault Gallery</h2>
   <div class="gallery">
     <img src="img1.jpg"><img src="img2.jpg"><img src="img3.jpg">
   </div>
 </section>
 
-<section>
-  <h2>🧠 AI Terminal</h2>
-  <textarea id="prompt"></textarea><br>
+<!-- ===== AI TERMINAL ===== -->
+<section data-aos="fade-up">
+  <h2>🤖 AI Terminal</h2>
+  <textarea id="prompt" placeholder="Enter your query..."></textarea><br>
   <button onclick="askAI()">Execute</button>
   <pre id="aiResponse">System idle...</pre>
 </section>
 
-<section>
+<!-- ===== LINKS ===== -->
+<section data-aos="fade-up">
   <h2>📡 Links</h2>
   <p><a href="https://github.com/nurzxc">GitHub</a> • 
      <a href="https://t.me/nurzxc">Telegram</a></p>
 </section>
 
-<script>
-function toggleTheme(){
-  document.body.classList.toggle("light");
-}
+<footer>© 2077 — Nurzxc Cyber Division // Active Node_#413</footer>
 
-/*** AI Function ***/
+<script>
+/* ===== Boot Intro Sequence ===== */
+window.addEventListener('load', () => {
+  const boot = document.getElementById('boot');
+  setTimeout(()=> boot.classList.add('hidden'), 3500);
+});
+
+/* ===== Theme Switch ===== */
+function toggleTheme(){ document.body.classList.toggle('light'); }
+
+/* ===== Modal Functions ===== */
+function openModal(title){
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modal').style.display='flex';
+}
+function closeModal(){ document.getElementById('modal').style.display='none'; }
+
+/* ===== AI Function ===== */
 async function askAI(){
   const prompt = document.getElementById("prompt").value;
-  document.getElementById("aiResponse").textContent = "Processing...";
-
+  const out = document.getElementById("aiResponse");
+  out.textContent = "Processing...";
   try {
     const res = await fetch("https://api.openai.com/v1/chat/completions", {
       method:"POST",
@@ -226,12 +331,66 @@ async function askAI(){
       })
     });
     const data = await res.json();
-    document.getElementById("aiResponse").textContent = data.choices[0].message.content;
-  } catch(e){
-    document.getElementById("aiResponse").textContent = "⚠ ERROR";
+    out.textContent = data.choices[0].message.content;
+  } catch(e){ out.textContent="⚠ ERROR"; }
+}
+
+/* ===== 3D Rotating Avatar ===== */
+let scene = new THREE.Scene();
+let camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+let renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
+renderer.setSize(220, 220);
+document.getElementById('avatar3D').appendChild(renderer.domElement);
+
+let geometry = new THREE.IcosahedronGeometry(2.3, 1);
+let material = new THREE.MeshStandardMaterial({ 
+  color: 0x00ffff, wireframe: true, emissive: 0x0088ff
+});
+let cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+
+let light = new THREE.PointLight(0xffffff, 1, 100);
+light.position.set(10, 10, 10);
+scene.add(light);
+
+camera.position.z = 6;
+function animate() {
+  requestAnimationFrame(animate);
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.02;
+  renderer.render(scene, camera);
+}
+animate();
+
+/* ===== Neon Rain Background ===== */
+const c = document.getElementById("neonRain");
+const ctx = c.getContext("2d");
+c.height = window.innerHeight;
+c.width = window.innerWidth;
+let chars = "01ΩΞΦΣΨΛ";
+chars = chars.split("");
+let font_size = 14;
+let columns = c.width / font_size;
+let drops = [];
+for(let x = 0; x < columns; x++) drops[x] = 1;
+
+function draw(){
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, c.width, c.height);
+  ctx.fillStyle = "#00ffff";
+  ctx.font = font_size + "px monospace";
+  for(let i = 0; i < drops.length; i++){
+    let text = chars[Math.floor(Math.random()*chars.length)];
+    ctx.fillText(text, i*font_size, drops[i]*font_size);
+    if(drops[i]*font_size > c.height && Math.random() > 0.975)
+      drops[i] = 0;
+    drops[i]++;
   }
 }
-</script>
+setInterval(draw, 50);
 
+/* ===== AOS Init ===== */
+AOS.init({ duration: 900, once: true });
+</script>
 </body>
 </html>
