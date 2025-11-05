@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CYBER NURZXC LAB | AI Automation</title>
+
+<style>
+/* Cyberpunk fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --neon-pink: #ff0096;
+  --neon-blue: #00eaff;
+  --neon-green: #39ff14;
+  --dark-bg: #05000e;
+  --panel-bg: rgba(10, 0, 30, 0.6);
+  --light-bg: #f5faff;
+}
+
+body {
+  font-family: 'Share Tech Mono', monospace;
+  background: var(--dark-bg);
+  color: var(--neon-blue);
+  margin: 0;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+/* Glitch Title */
+.glitch {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.8rem;
+  color: var(--neon-blue);
+  position: relative;
+  animation: flicker 2s infinite;
+}
+
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0; top: 0;
+}
+
+.glitch::before {
+  color: var(--neon-pink);
+  transform: translate(-3px, -2px);
+  opacity: .7;
+}
+
+.glitch::after {
+  color: var(--neon-green);
+  transform: translate(3px, 2px);
+  opacity: .7;
+}
+
+/* Sections */
+section {
+  margin: 40px auto;
+  width: 90%;
+  max-width: 920px;
+  background: var(--panel-bg);
+  border: 1px solid var(--neon-blue);
+  padding: 25px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px var(--neon-blue);
+  animation: fadeIn .8s ease;
+}
+
+/* Neon Buttons */
+button {
+  font-family: inherit;
+  background: transparent;
+  border: 2px solid var(--neon-pink);
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--neon-blue);
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: .2s;
+}
+
+button:hover {
+  box-shadow: 0 0 12px var(--neon-pink);
+  color: var(--neon-green);
+  border-color: var(--neon-blue);
+}
+
+/* AI box */
+textarea {
+  width: 100%;
+  background: black;
+  border: 1px solid var(--neon-green);
+  padding: 10px;
+  color: var(--neon-green);
+  border-radius: 8px;
+}
+
+pre {
+  background: black;
+  border: 1px solid var(--neon-blue);
+  padding: 15px;
+  color: var(--neon-blue);
+  min-height: 90px;
+  border-radius: 8px;
+}
+
+/* Image grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 15px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 8px;
+  filter: saturate(135%) brightness(110%);
+  box-shadow: 0 0 12px var(--neon-blue);
+  transition: .3s;
+}
+.gallery img:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 16px var(--neon-pink);
+}
+
+/* Theme button (top right) */
+.toggle-btn {
+  position: fixed;
+  top: 15px; right: 15px;
+  z-index: 9;
+}
+
+/* Animations */
+@keyframes flicker {
+  0% {opacity:1;} 10% {opacity:.8;} 20% {opacity:1;} 40% {opacity:.6;}
+  60% {opacity:1;} 80% {opacity:.7;} 100% {opacity:1;}
+}
+
+@keyframes fadeIn {
+  from {opacity:.2; transform:translateY(15px);}
+}
+</style>
+</head>
+
+<body>
+
+<button class="toggle-btn" onclick="toggleTheme()">🛰 MODE</button>
+
+<header>
+  <h1 class="glitch" data-text="CYBER NURZXC LAB">CYBER NURZXC LAB</h1>
+  <p>AI + Bots + CyberAutomation Unit_2077</p>
+</header>
+
+<section>
+  <h2>📦 DATA VAULT: PROJECT MISSION</h2>
+  <p>Automation experiments, neural intelligence & cybernetic workflows.</p>
+</section>
+
+<section>
+  <h2>🖼 VISUAL ARCHIVE</h2>
+  <div class="gallery">
+    <img src="img1.jpg">
+    <img src="img2.jpg">
+    <img src="img3.jpg">
+  </div>
+</section>
+
+<section>
+  <h2>🤖 AI TERMINAL</h2>
+  <textarea id="prompt" rows="3" placeholder="Input query to Neural Core..."></textarea><br><br>
+  <button onclick="askAI()">EXECUTE</button>
+  <pre id="aiResponse">Awaiting input...</pre>
+</section>
+
+<section>
+  <h2>🛰 CYBER-LINKS</h2>
+  <p>
+    <a href="https://github.com/nurzxc">🔗 GitHub</a> |
+    <a href="https://t.me/nurzxc">📡 Telegram</a> |
+    <a href="#">🎦 NeuralStream</a>
+  </p>
+</section>
+
+<footer>
+  <p>© 2077 — Nurzxc Cyber Division // Active Node_#413</p>
+</footer>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle("light-mode");
+}
+
+/*** AI Function ***/
+async function askAI(){
+  const prompt = document.getElementById("prompt").value;
+  document.getElementById("aiResponse").textContent = "Neural engine booting...";
+
+  try {
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer YOUR_API_KEY"
+      },
+      body: JSON.stringify({
+        model:"gpt-4.1-mini",
+        messages:[{role:"user",content:prompt}]
+      })
+    });
+    const data = await res.json();
+    document.getElementById("aiResponse").textContent = data.choices[0].message.content;
+  } catch(e){
+    document.getElementById("aiResponse").textContent = "⚠ SYSTEM ERROR";
+  }
+}
+</script>
+
+</body>
+</html>
