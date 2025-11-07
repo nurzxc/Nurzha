@@ -4,60 +4,86 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invest in Kids | Образовательный центр</title>
-<meta name="description" content="Invest in Kids — образовательный центр: английский, программирование, искусственный интеллект и робототехника для детей.">
 <link rel="icon" href="img/logo.png">
 <style>
-  html { scroll-behavior: smooth; }
-  body { margin:0; font-family: "Inter", Arial, sans-serif; color:#222; background:#fff;}
-  header {position:fixed; top:0; left:0; width:100%; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.1); z-index:1000;}
-  .container {width:90%; max-width:1200px; margin:auto;}
-  nav {display:flex; align-items:center; justify-content:space-between; padding:15px 0;}
-  nav ul {list-style:none; display:flex; gap:20px; margin:0; padding:0;}
-  nav a {text-decoration:none; color:#064e3b; font-weight:600; transition:0.3s;}
-  nav a:hover {color:#16a34a;}
-  .cta-btn {background:#16a34a; color:#fff; padding:10px 20px; border-radius:6px; text-decoration:none; transition:0.3s;}
-  .cta-btn:hover {background:#065f46;}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,Arial,sans-serif;color:#222;background:#fff;}
+  header{position:fixed;top:0;left:0;width:100%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.1);z-index:1000}
+  .container{width:90%;max-width:1200px;margin:auto;}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:15px 0;}
+  nav ul{list-style:none;display:flex;gap:20px;margin:0;padding:0;}
+  nav a{text-decoration:none;color:#064e3b;font-weight:600;transition:.3s;}
+  nav a:hover{color:#16a34a;}
+  .cta-btn{background:#16a34a;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;transition:.3s;}
+  .cta-btn:hover{background:#065f46;}
   /* hero */
-  #home {height:100vh; background:url('img/banner.jpg') center/cover no-repeat; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; position:relative;}
-  #home::before {content:""; position:absolute; inset:0; background:rgba(0,0,0,0.45);}
-  #home .content {position:relative; z-index:2; max-width:700px; padding:20px;}
-  #home h1 {font-size:3rem; margin-bottom:20px; line-height:1.2;}
-  #home p {font-size:1.2rem; margin-bottom:30px;}
-  #home a {background:#16a34a; padding:12px 28px; border-radius:6px; color:#fff; font-weight:600; text-decoration:none;}
-  #home a:hover {background:#065f46;}
+  #home{height:100vh;background:url('img/banner.jpg')center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;position:relative;}
+  #home::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45);}
+  #home .content{position:relative;z-index:2;max-width:700px;padding:20px;}
+  #home h1{font-size:3rem;margin-bottom:20px;line-height:1.2;}
+  #home p{font-size:1.2rem;margin-bottom:30px;}
+  #home a{background:#16a34a;padding:12px 28px;border-radius:6px;color:#fff;font-weight:600;text-decoration:none;}
+  #home a:hover{background:#065f46;}
   /* sections */
-  section {padding:100px 0;}
-  h2 {text-align:center; font-size:2rem; color:#065f46; margin-bottom:40px;}
-  .about {display:flex; flex-wrap:wrap; align-items:center; gap:40px;}
-  .about img {width:100%; max-width:500px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-  .about-text {flex:1; font-size:1.1rem; line-height:1.6;}
-  .courses {display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px;}
-  .course {background:#fff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08); padding:30px; transition:0.3s;}
-  .course:hover {transform:translateY(-5px);}
-  .course h3 {color:#065f46; margin-bottom:15px;}
-  .pricing table {width:100%; border-collapse:collapse; box-shadow:0 4px 12px rgba(0,0,0,0.08);}
-  .pricing th {background:#065f46; color:#fff; padding:14px;}
-  .pricing td {padding:12px; border-bottom:1px solid #e5e5e5;}
-  .pricing tr:last-child td {border-bottom:none;}
-  .pricing td:last-child {color:#16a34a; font-weight:600;}
-  .contact p {font-size:1.1rem; margin:8px 0;}
-  .contact a {color:#16a34a; text-decoration:none;}
-  .contact a:hover {text-decoration:underline;}
-  footer {background:#065f46; color:#fff; text-align:center; padding:30px 10px;}
-  footer p {margin:5px 0;}
+  section{padding:100px 0;}
+  h2{text-align:center;font-size:2rem;color:#065f46;margin-bottom:40px;}
+  .about{display:flex;flex-wrap:wrap;align-items:center;gap:40px;}
+  .about img{width:100%;max-width:500px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.1);}
+  .about-text{flex:1;font-size:1.1rem;line-height:1.6;}
+  .courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
+  .course{background:#fff;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:30px;transition:.3s;}
+  .course:hover{transform:translateY(-5px);}
+  .course h3{color:#065f46;margin-bottom:15px;}
+  /* pricing slider */
+  .slider{position:relative;overflow:hidden;max-width:1200px;margin:auto;}
+  .slides{display:flex;transition:transform .6s ease;}
+  .slide{min-width:100%;box-sizing:border-box;padding:40px 0;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .card{background:#fff;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.1);padding:25px;text-align:center;transition:.3s;}
+  .card:hover{transform:translateY(-5px);}
+  .card h3{background:#16a34a;color:#fff;padding:10px;border-radius:8px;margin:-25px -25px 15px;}
+  .price{font-size:1.8rem;font-weight:700;color:#065f46;margin:10px 0;}
+  .old-price{text-decoration:line-through;color:#888;font-size:.9rem;}
+  .discount{color:#16a34a;font-weight:600;}
+  .features{text-align:left;margin:15px 0;}
+  .features li{margin:6px 0;}
+  .card button{background:#16a34a;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:600;}
+  .card button:hover{background:#065f46;}
+  .arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:2rem;background:rgba(0,0,0,.4);color:#fff;border:none;border-radius:50%;width:45px;height:45px;cursor:pointer;}
+  .arrow:hover{background:#065f46;}
+  .prev{left:10px;} .next{right:10px;}
+  /* free lesson */
+  .free-lesson{background:#16a34a;color:#fff;text-align:center;padding:80px 20px;}
+  .free-lesson h2{color:#fff;}
+  .free-lesson p{font-size:1.2rem;margin-bottom:30px;}
+  .free-lesson .btns a{display:inline-block;margin:5px 10px;padding:12px 25px;border-radius:6px;text-decoration:none;font-weight:600;}
+  .btn1{background:#fff;color:#065f46;} .btn1:hover{background:#e2e8f0;}
+  .btn2{background:#065f46;color:#fff;} .btn2:hover{background:#033;}
+  /* reviews */
+  .reviews{background:#f8f8f8;}
+  .review-slider{position:relative;overflow:hidden;max-width:1200px;margin:auto;}
+  .review-slides{display:flex;transition:transform .5s ease;}
+  .review{min-width:100%;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+  .review img{width:300px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);}
+  /* contacts */
+  .contacts .info{display:flex;flex-wrap:wrap;gap:30px;justify-content:center;text-align:left;}
+  .contact-box{background:#fff;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:25px;flex:1;min-width:280px;}
+  .contact-box a{color:#16a34a;text-decoration:none;}
+  .contact-box a:hover{text-decoration:underline;}
   /* form */
-  form {background:#fff; max-width:600px; margin:40px auto 0; padding:40px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-  form label {display:block; font-weight:600; color:#065f46; margin-bottom:6px;}
-  form input, form textarea {width:100%; padding:12px; margin-bottom:20px; border:1px solid #ccc; border-radius:8px; font-size:1rem;}
-  form button {background:#16a34a; color:#fff; border:none; padding:12px 30px; border-radius:6px; font-size:1rem; font-weight:600; cursor:pointer; transition:0.3s;}
-  form button:hover {background:#065f46;}
-  /* whatsapp floating */
-  .whatsapp-float {
-    position:fixed; bottom:20px; right:20px; background:#25d366; color:#fff;
-    border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center;
-    box-shadow:0 4px 10px rgba(0,0,0,0.3); text-decoration:none; font-size:30px; z-index:1000;
-  }
-  .whatsapp-float:hover {background:#128c7e;}
+  form{background:#fff;max-width:600px;margin:40px auto 0;padding:40px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.1);}
+  form label{display:block;font-weight:600;color:#065f46;margin-bottom:6px;}
+  form input,form textarea{width:100%;padding:12px;margin-bottom:20px;border:1px solid #ccc;border-radius:8px;font-size:1rem;}
+  form button{background:#16a34a;color:#fff;border:none;padding:12px 30px;border-radius:6px;font-size:1rem;font-weight:600;cursor:pointer;transition:.3s;}
+  form button:hover{background:#065f46;}
+  footer{background:#065f46;color:#fff;text-align:center;padding:30px 10px;}
+  footer p{margin:5px 0;}
+  /* whatsapp */
+  .whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.3);font-size:30px;z-index:1000;text-decoration:none;}
+  .whatsapp-float:hover{background:#128c7e;}
+  .manager{position:fixed;bottom:100px;right:20px;display:flex;align-items:center;background:#fff;border-radius:50px;box-shadow:0 2px 8px rgba(0,0,0,.2);padding:6px 10px;z-index:1000;}
+  .manager img{width:40px;height:40px;border-radius:50%;margin-right:8px;}
+  .manager span{color:#065f46;font-weight:600;font-size:.9rem;}
   @media(max-width:768px){
     nav ul{display:none;}
     #home h1{font-size:2rem;}
@@ -67,14 +93,12 @@
   }
 </style>
 </head>
-
 <body>
 
-<!-- Header -->
 <header>
   <div class="container">
     <nav>
-      <a href="#home" class="logo"><strong>Invest in Kids</strong></a>
+      <a href="#home"><strong>Invest in Kids</strong></a>
       <ul>
         <li><a href="#home">Главная</a></li>
         <li><a href="#about">О нас</a></li>
@@ -87,7 +111,6 @@
   </div>
 </header>
 
-<!-- Hero -->
 <section id="home">
   <div class="content">
     <h1>Будущее начинается здесь</h1>
@@ -96,7 +119,6 @@
   </div>
 </section>
 
-<!-- About -->
 <section id="about">
   <div class="container about">
     <img src="img/classroom.jpg" alt="Invest in Kids">
@@ -108,83 +130,110 @@
   </div>
 </section>
 
-<!-- Courses -->
 <section id="courses">
   <div class="container">
     <h2>Наши курсы</h2>
     <div class="courses">
-      <div class="course">
-        <h3>Английский язык</h3>
-        <p>IELTS, SAT и разговорный английский для детей и подростков.</p>
+      <div class="course"><h3>Английский язык</h3><p>IELTS, SAT и разговорный английский для детей и подростков.</p></div>
+      <div class="course"><h3>Программирование и робототехника</h3><p>Python, LEGO EV3, Arduino, основы логики и проектное мышление.</p></div>
+      <div class="course"><h3>AI и NoCode</h3><p>Создание проектов с использованием искусственного интеллекта и платформ без кода.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- pricing slider -->
+<section id="pricing">
+  <h2>Стоимость обучения</h2>
+  <div class="slider">
+    <div class="slides" id="priceSlides">
+      <div class="slide">
+        <div class="cards">
+          <div class="card">
+            <h3>“В ГРУППЕ” General English</h3>
+            <p class="price">33 900 ₸ / мес</p>
+            <p class="old-price">49 900 ₸</p><p class="discount">дешевле на 40 %</p>
+            <ul class="features">
+              <li>1 урок 80 мин (English Club 60 мин)</li>
+              <li>В группе 6-9 студентов</li>
+              <li>24 урока в месяц, 12 с носителем</li>
+              <li>Offline или Online</li>
+            </ul>
+            <button onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Записаться</button>
+          </div>
+          <div class="card">
+            <h3>IELTS в группе</h3>
+            <p class="price">89 900 ₸ / мес</p>
+            <p class="old-price">139 900 ₸</p><p class="discount">дешевле на 40 %</p>
+            <ul class="features">
+              <li>1 урок 90 мин, 1 раз в неделю Mock Test</li>
+              <li>В группе 4-6 студентов</li>
+              <li>Offline или Online</li>
+            </ul>
+            <button onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Записаться</button>
+          </div>
+          <div class="card">
+            <h3>“Индивидуально” General English</h3>
+            <p class="price">84 900 ₸ / мес</p>
+            <p class="old-price">139 900 ₸</p><p class="discount">дешевле на 40 %</p>
+            <ul class="features">
+              <li>1 урок 60 мин</li><li>6 раз в неделю, 3 с носителем</li><li>1 студент в группе</li><li>Offline или Online</li>
+            </ul>
+            <button onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Записаться</button>
+          </div>
+          <div class="card">
+            <h3>Премиум AI + English</h3>
+            <p class="price">99 900 ₸ / мес</p>
+            <p class="old-price">159 900 ₸</p><p class="discount">дешевле на 40 %</p>
+            <ul class="features">
+              <li>AI + английский в одном курсе</li><li>Проекты и сертификаты</li><li>Offline и Online</li>
+            </ul>
+            <button onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Записаться</button>
+          </div>
+        </div>
       </div>
-      <div class="course">
-        <h3>Программирование и робототехника</h3>
-        <p>Python, LEGO EV3, Arduino, основы логики и проектное мышление.</p>
+    </div>
+    <button class="arrow prev" onclick="moveSlide(-1)">‹</button>
+    <button class="arrow next" onclick="moveSlide(1)">›</button>
+  </div>
+</section>
+
+<section class="free-lesson">
+  <h2>Первый урок — бесплатно!</h2>
+  <p>Познакомьтесь с преподавателем и узнайте свой уровень на пробном уроке</p>
+  <div class="btns">
+    <a href="#contactForm" class="btn1">Записаться на пробный</a>
+    <a href="https://wa.me/77081486845" class="btn2" target="_blank">Наш WhatsApp</a>
+  </div>
+</section>
+
+<section class="reviews">
+  <h2>Отзывы о нас</h2>
+  <div class="review-slider">
+    <div class="review-slides" id="reviewSlides">
+      <div class="review">
+        <img src="img/review1.jpg" alt="Отзыв 1">
+        <img src="img/review2.jpg" alt="Отзыв 2">
+        <img src="img/review3.jpg" alt="Отзыв 3">
       </div>
-      <div class="course">
-        <h3>AI и NoCode</h3>
-        <p>Создание проектов с использованием искусственного интеллекта и платформ без кода.</p>
+      <div class="review">
+        <img src="img/review4.jpg" alt="Отзыв 4">
+        <img src="img/review5.jpg" alt="Отзыв 5">
       </div>
     </div>
   </div>
 </section>
 
-<!-- Pricing -->
-<section id="pricing" class="pricing">
-  <div class="container">
-    <h2>Стоимость обучения</h2>
-    <table>
-      <thead>
-        <tr><th>Курс</th><th>Формат</th><th>Длительность</th><th>Цена</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Английский язык</td><td>Групповой / Онлайн</td><td>1 месяц</td><td>от 25 000 ₸</td></tr>
-        <tr><td>IELTS / SAT</td><td>Индивидуально</td><td>3 месяца</td><td>от 50 000 ₸</td></tr>
-        <tr><td>AI + NoCode</td><td>Групповой</td><td>4 недели</td><td>от 40 000 ₸</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="contact">
-  <div class="container" style="text-align:center;">
-    <h2>Контакты</h2>
-    <p>📍 Сыганак 4, Астана, Казахстан</p>
-    <p>📞 <a href="https://wa.me/77081486845" target="_blank">+7 708 148 6845</a></p>
-    <p>📧 <a href="mailto:aessenaliyeva@gmail.com">aessenaliyeva@gmail.com</a></p>
-    <p>📸 <a href="https://www.instagram.com/investinkidskz?igsh=MTFxYWxkb2t5YzljNA==" target="_blank">@investinkidskz</a></p>
-  </div>
-
-  <!-- 📩 Форма обратной связи -->
-  <form id="contactForm">
-    <h2 style="text-align:center; color:#065f46;">Оставить заявку</h2>
-    <label for="name">Имя</label>
-    <input type="text" id="name" name="name" placeholder="Ваше имя" required>
-    <label for="phone">Телефон</label>
-    <input type="tel" id="phone" name="phone" placeholder="+7 ___ ___ ____" required>
-    <label for="message">Комментарий / интересующий курс</label>
-    <textarea id="message" name="message" rows="4" placeholder="Например: хочу записать ребёнка на курс по Python"></textarea>
-    <button type="submit">Отправить</button>
-  </form>
-</section>
-
-<!-- Footer -->
-<footer>
-  <p>© 2025 Invest in Kids | Все права защищены</p>
-  <p>Создано с ❤ для будущего Казахстана</p>
-</footer>
-
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/77081486845" target="_blank" class="whatsapp-float" title="Написать в WhatsApp">💬</a>
-
-<!-- TODO: обработчик формы -->
-<script>
-document.getElementById("contactForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  alert("Спасибо! Ваша заявка отправлена.");
-});
-</script>
-
-</body>
-</html>
+<section class="contacts" id="contact">
+  <h2>Контакты и как нас найти в Астане</h2>
+  <div class="container info">
+    <div class="contact-box">
+      <h3>📍 Офис Сыганак 4</h3>
+      <p>г. Астана, ул. Сыганак 4 (БЦ «Invest Center»)</p>
+      <p><a href="https://2gis.kz/astana" target="_blank">Посмотреть путь в 2GIS</a></p>
+      <p>Режим работы: Пн–Сб 9:00–21:00</p>
+    </div>
+    <div class="contact-box">
+      <h3>📞 Связаться</h3>
+      <p><strong>Телефон:</strong> <a href="https://wa.me/77081486845" target="_blank">+7 708 148 6845</a></p>
+      <p><strong>Email:</strong> <a href="mailto:aessenaliyeva@gmail.com">aessenaliyeva@gmail.com</a></p>
+      <p><strong>Instagram:</strong> <a href="https://www.instagram.com
