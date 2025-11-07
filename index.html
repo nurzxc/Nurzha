@@ -6,88 +6,69 @@
   <title>Invest in Kids | Образовательный центр</title>
   <link rel="icon" href="img/logo.jpg">
   <style>
-    html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;color:#222;background:#fff;}
-    header{position:fixed;top:0;left:0;width:100%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.1);z-index:1000;}
-    nav{display:flex;align-items:center;justify-content:space-between;padding:15px 5%;}
-    nav ul{list-style:none;display:flex;gap:20px;margin:0;padding:0;}
-    nav a{text-decoration:none;color:#065f46;font-weight:600;transition:.3s;}
-    nav a:hover{color:#16a34a;}
-    .cta-btn{background:#16a34a;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;transition:.3s;}
-    .cta-btn:hover{background:#065f46;}
-    #home{height:100vh;background:url('img/banner.jpg') center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;position:relative;}
-    #home::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45);}
-    .hero-content{position:relative;z-index:2;max-width:1200px;width:90%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;}
-    .hero-left{flex:1;min-width:280px;}
-    .hero-right{flex:1;min-width:300px;display:flex;justify-content:center;}
-    .hero-left h1{font-size:3rem;margin-bottom:10px;}
-    .hero-left p{font-size:1.2rem;margin-bottom:25px;}
-    .promo-box{background:rgba(255,255,255,.1);border:2px dashed #fff;padding:30px;border-radius:15px;text-align:center;backdrop-filter:blur(5px);}
-    .promo-box h3{margin:0 0 10px 0;font-size:1.3rem;}
-    .promo-price{font-size:2rem;color:#9fff80;font-weight:700;}
-    .promo-price span{text-decoration:line-through;opacity:.8;margin-right:10px;}
-    .blink{animation:blink 1s infinite alternate;}@keyframes blink{from{opacity:1}to{opacity:.4}}
-    .promo-btn{background:#9fff80;color:#065f46;padding:12px 24px;font-weight:700;border:none;border-radius:6px;cursor:pointer;margin-top:10px;}
-    .promo-btn:hover{background:#fff;}
-    section{padding:100px 0;}h2{text-align:center;color:#065f46;margin-bottom:40px;font-size:2rem;}
-    .about{display:flex;flex-wrap:wrap;align-items:center;gap:40px;width:90%;max-width:1200px;margin:auto;}
-    .about img{width:100%;max-width:500px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1);}
-    .about-text{flex:1;font-size:1.1rem;line-height:1.6;}
-    .courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;width:90%;max-width:1200px;margin:auto;}
-    .course{background:#fff;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:30px;transition:.3s;text-align:center;}
-    .course:hover{transform:translateY(-5px);}
-    .course h3{color:#065f46;margin-bottom:10px;}
-    .slider{position:relative;overflow:hidden;max-width:1200px;margin:auto;}
-    .slides{display:flex;transition:transform .6s ease;}
-    .slide{min-width:100%;box-sizing:border-box;}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
-    .card{background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1);padding:25px;text-align:center;transition:.3s;}
-    .card:hover{transform:translateY(-5px);}
-    .card h3{background:#16a34a;color:#fff;padding:10px;border-radius:8px;margin:-25px -25px 15px;}
-    .price{font-size:1.6rem;font-weight:700;color:#065f46;}
-    .old-price{text-decoration:line-through;color:#888;font-size:.9rem;}
-    .discount{color:red;font-weight:600;}
-    .features{text-align:left;margin:15px 0;}
-    .features li{margin:6px 0;}
-    .card button{background:#16a34a;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:600;}
-    .card button:hover{background:#065f46;}
-    .arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:none;border-radius:50%;width:45px;height:45px;cursor:pointer;font-size:1.8rem;}
-    .arrow:hover{background:#065f46;}.prev{left:10px;}.next{right:10px;}
-    .free-lesson{background:#16a34a;color:#fff;text-align:center;padding:80px 20px;}
-    .free-lesson .btns a{display:inline-block;margin:5px 10px;padding:12px 25px;border-radius:6px;text-decoration:none;font-weight:600;}
-    .btn1{background:#fff;color:#065f46;}.btn1:hover{background:#e2e8f0;}
-    .btn2{background:#065f46;color:#fff;}.btn2:hover{background:#033;}
-    .photo-slider{position:relative;max-width:1200px;margin:auto;overflow:hidden;}
-    .photo-slides{display:flex;transition:transform .6s ease;}
-    .photo{min-width:100%;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
-    .photo img{width:350px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);}
-    .photo-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:none;border-radius:50%;width:45px;height:45px;font-size:1.5rem;cursor:pointer;}
-    .photo-arrow:hover{background:#065f46;}.photo-prev{left:10px;}.photo-next{right:10px;}
-    .review-slider{position:relative;overflow:hidden;max-width:1200px;margin:auto;}
-    .review-slides{display:flex;transition:transform .5s ease;}
-    .review{min-width:100%;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
-    .review img{width:300px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);}
-    .contacts .info{display:flex;flex-wrap:wrap;gap:30px;justify-content:center;text-align:left;width:90%;max-width:1200px;margin:auto;}
-    .contact-box{background:#fff;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:25px;flex:1;min-width:280px;}
-    .contact-box a{color:#16a34a;text-decoration:none;}
-    form{background:#fff;max-width:600px;margin:40px auto;padding:40px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1);}
-    form label{display:block;font-weight:600;color:#065f46;margin-bottom:6px;}
-    form input,form textarea{width:100%;padding:12px;margin-bottom:20px;border:1px solid #ccc;border-radius:8px;font-size:1rem;}
-    form button{background:#16a34a;color:#fff;border:none;padding:12px 30px;border-radius:6px;font-size:1rem;font-weight:600;cursor:pointer;}
-    form button:hover{background:#065f46;}
-    .success{display:none;text-align:center;margin-top:10px;color:#16a34a;font-weight:600;}
-    footer{background:#065f46;color:#fff;text-align:center;padding:25px 10px;}
-    .whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.3);font-size:30px;z-index:1000;}
-    .manager{position:fixed;bottom:100px;right:20px;display:flex;align-items:center;background:#fff;border-radius:50px;box-shadow:0 2px 8px rgba(0,0,0,.2);padding:6px 10px;z-index:1000;}
-    .manager img{width:40px;height:40px;border-radius:50%;margin-right:8px;}
-    .manager span{color:#065f46;font-weight:600;font-size:.9rem;}
-    @media(max-width:768px){nav ul{display:none;}#home{height:auto;padding:120px 0;}#home h1{font-size:2rem;}}
+    html {scroll-behavior: smooth;}
+    body {margin: 0; font-family: Inter, Arial, sans-serif; color: #222; background: #fff;}
+    header {position: fixed; top: 0; left: 0; width: 100%; background: #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, .1); z-index: 1000; padding: 15px 5%;}
+
+    nav ul {list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;}
+    nav a {text-decoration: none; color: #065f46; font-weight: 600; transition: .3s;}
+    nav a:hover {color: #16a34a;}
+    .cta-btn {background: #16a34a; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: .3s;}
+    .cta-btn:hover {background: #065f46;}
+
+    #home {height: 100vh; background: url('img/banner.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; color: #fff; position: relative;}
+    #home::before {content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .45);}
+    .hero-content {position: relative; z-index: 2; max-width: 1200px; width: 90%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;}
+    .hero-left {flex: 1; min-width: 280px;}
+    .hero-right {flex: 1; min-width: 300px; display: flex; justify-content: center;}
+    .hero-left h1 {font-size: 3rem; margin-bottom: 10px;}
+    .hero-left p {font-size: 1.2rem; margin-bottom: 25px;}
+    .promo-box {background: rgba(255, 255, 255, .1); border: 2px dashed #fff; padding: 30px; border-radius: 15px; text-align: center; backdrop-filter: blur(5px);}
+    .promo-box h3 {margin: 0 0 10px 0; font-size: 1.3rem;}
+    .promo-price {font-size: 2rem; color: #9fff80; font-weight: 700;}
+    .promo-price span {text-decoration: line-through; opacity: .8; margin-right: 10px;}
+    .blink {animation: blink 1s infinite alternate;}
+    @keyframes blink {from {opacity: 1;} to {opacity: .4;}}
+    .promo-btn {background: #9fff80; color: #065f46; padding: 12px 24px; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px;}
+    .promo-btn:hover {background: #fff;}
+
+    /* Adjusted styling */
+    #home {height: 80vh; padding: 60px 0;}  /* Adjusted size */
+    .cta-btn {padding: 15px 25px; font-size: 1.2rem;}
+    .promo-box {padding: 25px;}
+    .promo-box h3, .promo-price {font-size: 1.5rem;} /* Adjusted text size */
+
+    /* Slider Section */
+    .photo-slider {position: relative; max-width: 1200px; margin: auto; overflow: hidden;}
+    .photo-slides {display: flex; transition: transform .6s ease;}
+    .photo {min-width: 100%; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;}
+    .photo img {width: 350px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, .1);}
+    .photo-arrow {position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, .4); color: #fff; border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer;}
+    .photo-arrow:hover {background: #065f46;}
+    .photo-prev {left: 10px;}
+    .photo-next {right: 10px;}
+
+    /* Manager Info */
+    .manager {position: fixed; bottom: 100px; right: 20px; display: flex; align-items: center; background: #fff; border-radius: 50px; box-shadow: 0 2px 8px rgba(0, 0, 0, .2); padding: 6px 10px; z-index: 1000;}
+    .manager img {width: 40px; height: 40px; border-radius: 50%; margin-right: 8px;}
+    .manager span {color: #065f46; font-weight: 600; font-size: .9rem;}
+
+    /* Mobile Responsiveness */
+    @media(max-width: 768px) {
+      .hero-content {flex-direction: column;}
+      .promo-box {width: 100%; margin-top: 20px;}
+      .hero-left h1 {font-size: 2rem;}
+      .cta-btn {padding: 10px 15px; font-size: 1rem;}
+    }
+
   </style>
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- Header Section -->
   <header>
     <nav>
-      <a href="#home"><h1><strong>Invest in Kids<h1></strong></a>
+      <a href="#home"><strong>Invest in Kids</strong></a>
       <ul>
         <li><a href="#home">Главная</a></li>
         <li><a href="#about">О нас</a></li>
@@ -99,7 +80,7 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Home Section -->
   <section id="home">
     <div class="hero-content">
       <div class="hero-left">
@@ -253,4 +234,53 @@
         <p><a href="https://wa.me/77081486845" target="_blank">+7 708 148 6845</a></p>
         <p><a href="mailto:aessenaliyeva@gmail.com">aessenaliyeva@gmail.com</a></p>
         <p><a href="https://www.instagram.com/investinkidskz" target="_blank">@investinkidskz</a></p>
-      </
+      </div>
+    </div>
+
+    <form id="contactForm">
+      <h2 style="text-align:center;color:#065f46;">Оставить заявку</h2>
+      <label>Имя</label>
+      <input type="text" id="name" required>
+      <label>Телефон</label>
+      <input type="tel" id="phone" required>
+      <label>Комментарий</label>
+      <textarea id="message" rows="4"></textarea>
+      <button type="submit">Отправить заявку</button>
+      <div class="success" id="successMsg">✅ Ваша заявка отправлена!</div>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Invest in Kids | Все права защищены</p>
+  </footer>
+  <a href="https://wa.me/77081486845" class="whatsapp-float" target="_blank">💬</a>
+  <div class="manager"><img src="img/manager.png"><span>Онлайн менеджер WhatsApp</span></div>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const msg = document.getElementById("successMsg");
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const data = new FormData();
+      data.append("entry.1111111111", document.getElementById("name").value);
+      data.append("entry.2222222222", document.getElementById("phone").value);
+      data.append("entry.3333333333", document.getElementById("message").value);
+      fetch("https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID_HERE/formResponse", {
+        method: "POST",
+        body: data,
+        mode: "no-cors"
+      }).then(() => {
+        msg.style.display = "block";
+        form.reset();
+        setTimeout(() => msg.style.display = "none", 5000);
+      });
+    });
+
+    let priceIndex = 0, photoIndex = 0, reviewIndex = 0;
+    function autoSlides() {
+      const ps = document.getElementById("priceSlides"), ph = document.getElementById("photoSlides"), rs = document.getElementById("reviewSlides");
+      // Implement the auto-slide functionality if necessary
+    }
+  </script>
+</body>
+</html>
