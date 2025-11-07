@@ -1,401 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CYBER NURZXC LAB 2.2 | Neo-Holo Interface</title>
-
-<!-- Fonts & Libraries -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-
-<style>
-:root {
-  --bg-dark: #030014;
-  --bg-light: #e6f4ff;
-  --glass-dark: rgba(0, 15, 40, 0.55);
-  --glass-light: rgba(255, 255, 255, 0.7);
-  --cyan: #00f5ff;
-  --pink: #ff37c7;
-  --green: #2fff95;
-  --text-dark: #d6f8ff;
-  --text-light: #081018;
-}
-
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-dark);
-  overflow-x: hidden;
-  transition: background .4s, color .4s;
-  text-align: center;
-}
-body.light {
-  background: var(--bg-light);
-  color: var(--text-light);
-}
-
-h1, h2 {
-  font-family: 'Orbitron', sans-serif;
-  letter-spacing: 1px;
-}
-a { color: var(--cyan); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-/* ===== Boot Intro ===== */
-#boot {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  color: #00ffea;
-  font-family: 'Share Tech Mono', monospace;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  font-size: 1.2rem;
-  transition: opacity 1s ease;
-}
-#boot span { display:block; margin: 4px; }
-.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* ===== Neon Rain (canvas) ===== */
-#neonRain {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  z-index: -2;
-  background: radial-gradient(circle at bottom, #02000a 0%, #000 80%);
-}
-
-/* ===== Hero Section ===== */
-.hero {
-  padding: 100px 20px 40px;
-  background: linear-gradient(145deg, #00111c, #090021, #001e1e);
-  backdrop-filter: blur(12px);
-  box-shadow: inset 0 0 120px rgba(0,255,255,0.2);
-  animation: glow 6s infinite alternate;
-}
-@keyframes glow {
-  0% { box-shadow: inset 0 0 60px rgba(0,255,255,0.2); }
-  100% { box-shadow: inset 0 0 150px rgba(255,0,255,0.25); }
-}
-.hero h1 {
-  font-size: 3rem;
-  background: linear-gradient(90deg, var(--cyan), var(--pink));
-  -webkit-background-clip: text;
-  color: transparent;
-}
-.hero p { margin-top: 8px; }
-
-/* ===== Avatar (3D canvas) ===== */
-#avatar3D {
-  width: 220px; height: 220px;
-  margin: 30px auto;
-  border-radius: 50%;
-  box-shadow: 0 0 25px var(--cyan);
-}
-
-/* ===== Section Style ===== */
-section {
-  width: 90%;
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 25px;
-  border-radius: 14px;
-  background: var(--glass-dark);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0,255,255,0.3);
-  animation: fadeIn .6s ease;
-}
-body.light section {
-  background: var(--glass-light);
-  border-color: rgba(0,0,0,0.2);
-}
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(10px);}
-}
-
-/* ===== Gallery ===== */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 12px;
-}
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
-  transition: .3s;
-}
-.gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px var(--pink);
-}
-
-/* ===== Achievements ===== */
-.achievements {
-  display: flex; flex-wrap: wrap; gap: 15px;
-  justify-content: center;
-}
-.ach {
-  padding: 16px 22px;
-  border: 1px solid var(--cyan);
-  border-radius: 10px;
-  background: rgba(0,255,255,0.08);
-  font-weight: 600;
-  cursor: pointer;
-  transition: .3s;
-}
-.ach:hover {
-  transform: scale(1.05);
-  background: rgba(255,0,255,0.1);
-}
-
-/* ===== Modal ===== */
-.modal {
-  position: fixed;
-  top: 0; left: 0; right:0; bottom:0;
-  background: rgba(0,0,0,0.7);
-  display: none;
-  align-items: center; justify-content: center;
-  z-index: 1000;
-}
-.modal-content {
-  background: #01010f;
-  color: var(--cyan);
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid var(--pink);
-  width: 80%; max-width: 400px;
-}
-
-/* ===== AI Terminal ===== */
-textarea {
-  width: 100%;
-  border-radius: 8px;
-  background: #000;
-  color: var(--green);
-  padding: 10px;
-  min-height: 80px;
-}
-pre {
-  background: #000;
-  color: var(--cyan);
-  padding: 15px;
-  border-radius: 8px;
-  min-height: 100px;
-  text-align: left;
-  overflow-x: auto;
-}
-
-/* ===== Buttons ===== */
-button {
-  background: linear-gradient(90deg, var(--cyan), var(--pink));
-  border: none;
-  color: #000;
-  padding: 12px 24px;
-  font-weight: 700;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: .2s;
-}
-button:hover { transform: scale(1.06); }
-
-.themeBtn {
-  position: fixed; top: 15px; right: 15px;
-  z-index: 10;
-}
-
-/* ===== Footer ===== */
-footer {
-  margin-top: 50px;
-  padding: 20px;
-  font-size: .9rem;
-  opacity: 0.7;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invest in Kids | Образовательный центр</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="img/logo.png" />
 </head>
 
-<body>
+<body class="bg-white text-gray-800">
+  <!-- Навигация -->
+  <header class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
+    <nav class="container mx-auto flex items-center justify-between px-4 py-3">
+      <a href="index.html" class="text-2xl font-bold text-blue-600">Invest in Kids</a>
+      <ul class="hidden md:flex space-x-6 text-gray-700 font-medium">
+        <li><a href="index.html" class="hover:text-blue-600">Главная</a></li>
+        <li><a href="about.html" class="hover:text-blue-600">О нас</a></li>
+        <li><a href="courses.html" class="hover:text-blue-600">Курсы</a></li>
+        <li><a href="pricing.html" class="hover:text-blue-600">Прайс</a></li>
+        <li><a href="contact.html" class="hover:text-blue-600">Контакты</a></li>
+      </ul>
+      <a href="contact.html" class="hidden md:inline-block bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition">Записаться</a>
+    </nav>
+  </header>
 
-<!-- ===== Hacker Boot Intro ===== -->
-<div id="boot">
-  <span>> Initializing system...</span>
-  <span>> Loading neural interface...</span>
-  <span>> Connecting to NURZXC mainframe...</span>
-  <span>> Access granted.</span>
-</div>
+  <!-- Главный баннер -->
+  <section class="h-screen bg-cover bg-center flex items-center justify-center text-center"
+           style="background-image: url('img/hero.jpg');">
+    <div class="bg-black bg-opacity-50 text-white p-10 rounded-lg">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Развиваем будущее с Invest in Kids</h1>
+      <p class="text-lg md:text-xl mb-6">Английский, программирование, искусственный интеллект и креативное обучение для детей и подростков</p>
+      <a href="courses.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition">Посмотреть курсы</a>
+    </div>
+  </section>
 
-<!-- ===== Neon Rain Background ===== -->
-<canvas id="neonRain"></canvas>
+  <!-- О центре -->
+  <section class="py-20 bg-gray-50" id="about">
+    <div class="container mx-auto px-6 text-center md:text-left">
+      <h2 class="text-3xl font-bold text-blue-600 mb-6 text-center">О нашем центре</h2>
+      <div class="md:flex items-center justify-center gap-10">
+        <img src="img/classroom.jpg" alt="Invest in Kids" class="rounded-lg shadow-lg w-full md:w-1/2 mb-6 md:mb-0" />
+        <div class="md:w-1/2">
+          <p class="text-lg mb-4 leading-relaxed">
+            Invest in Kids — это современный образовательный центр, который помогает детям и подросткам изучать английский язык, программирование, робототехнику и искусственный интеллект.
+          </p>
+          <p class="text-lg mb-6 leading-relaxed">
+            Мы создаём инновационные курсы, которые готовят детей к будущему, развивают креативность, критическое мышление и уверенность в себе.
+          </p>
+          <a href="about.html" class="bg-blue-600 text-white px-5 py-3 rounded-md font-medium hover:bg-blue-700 transition">Подробнее</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- ===== Theme Button ===== -->
-<button class="themeBtn" onclick="toggleTheme()">🌓 MODE</button>
-
-<!-- ===== HERO ===== -->
-<div class="hero" data-aos="zoom-in">
-  <h1>CYBER NURZXC LAB 2.2</h1>
-  <p>AI • Automation • Future Systems</p>
-</div>
-
-<!-- ===== 3D HOLO-AVATAR ===== -->
-<div id="avatar3D"></div>
-
-<!-- ===== ABOUT ===== -->
-<section data-aos="fade-up">
-  <h2>🧠 About</h2>
-  <p>Exploring neural workflows, building smart automation bots, and merging code with creativity. Welcome to the lab of tomorrow.</p>
-</section>
-
-<!-- ===== ACHIEVEMENTS ===== -->
-<section data-aos="fade-up">
-  <h2>🏆 Achievements</h2>
-  <div class="achievements">
-    <div class="ach" onclick="openModal('Built AI Automation Lab')">🚀 Built AI Automation Lab</div>
-    <div class="ach" onclick="openModal('Trained LLM Chatbots')">🤖 Trained LLM Chatbots</div>
-    <div class="ach" onclick="openModal('n8n Master Architect')">🧩 n8n Master Architect</div>
-    <div class="ach" onclick="openModal('CyberOps Hackathon Winner')">🏅 CyberOps Hackathon Winner</div>
-  </div>
-</section>
-
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <h3 id="modalTitle"></h3>
-    <p>Achievement unlocked in the Cyber Division Database.</p>
-    <button onclick="closeModal()">Close</button>
-  </div>
-</div>
-
-<!-- ===== GALLERY ===== -->
-<section data-aos="fade-up">
-  <h2>📸 Vault Gallery</h2>
-  <div class="gallery">
-    <img src="img1.jpg"><img src="img2.jpg"><img src="img3.jpg">
-  </div>
-</section>
-
-<!-- ===== AI TERMINAL ===== -->
-<section data-aos="fade-up">
-  <h2>🤖 AI Terminal</h2>
-  <textarea id="prompt" placeholder="Enter your query..."></textarea><br>
-  <button onclick="askAI()">Execute</button>
-  <pre id="aiResponse">System idle...</pre>
-</section>
-
-<!-- ===== LINKS ===== -->
-<section data-aos="fade-up">
-  <h2>📡 Links</h2>
-  <p><a href="https://github.com/nurzxc">GitHub</a> • 
-     <a href="https://t.me/nurzxc">Telegram</a></p>
-</section>
-
-<footer>© 2077 — Nurzxc Cyber Division // Active Node_#413</footer>
-
-<script>
-/* ===== Boot Intro Fix ===== */
-window.addEventListener('load', () => {
-  const boot = document.getElementById('boot');
-  setTimeout(() => {
-    boot.style.opacity = '0';
-    boot.style.transition = 'opacity 1s ease';
-    setTimeout(() => boot.remove(), 1000);
-  }, 2500);
-});
-
-/* ===== Theme Switch ===== */
-function toggleTheme(){ document.body.classList.toggle('light'); }
-
-/* ===== Modal ===== */
-function openModal(title){
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modal').style.display='flex';
-}
-function closeModal(){ document.getElementById('modal').style.display='none'; }
-
-/* ===== AI Terminal ===== */
-async function askAI(){
-  const prompt = document.getElementById("prompt").value;
-  const out = document.getElementById("aiResponse");
-  out.textContent = "Processing...";
-  try {
-    const res = await fetch("https://api.openai.com/v1/chat/completions", {
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json",
-        "Authorization":"Bearer YOUR_API_KEY"
-      },
-      body: JSON.stringify({
-        model:"gpt-4.1-mini",
-        messages:[{role:"user",content:prompt}]
-      })
-    });
-    const data = await res.json();
-    out.textContent = data.choices[0].message.content;
-  } catch(e){ out.textContent="⚠ ERROR"; }
-}
-
-/* ===== 3D Rotating Avatar ===== */
-let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-let renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
-renderer.setSize(220, 220);
-document.getElementById('avatar3D').appendChild(renderer.domElement);
-
-let geometry = new THREE.IcosahedronGeometry(2.3, 1);
-let material = new THREE.MeshStandardMaterial({ 
-  color: 0x00ffff, wireframe: true, emissive: 0x0088ff
-});
-let cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
-
-let light = new THREE.PointLight(0xffffff, 1, 100);
-light.position.set(10, 10, 10);
-scene.add(light);
-
-camera.position.z = 6;
-function animate() {
-  requestAnimationFrame(animate);
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.02;
-  renderer.render(scene, camera);
-}
-animate();
-
-/* ===== Neon Rain Background ===== */
-const c = document.getElementById("neonRain");
-const ctx = c.getContext("2d");
-c.height = window.innerHeight;
-c.width = window.innerWidth;
-let chars = "01ΩΞΦΣΨΛ".split("");
-let font_size = 14;
-let columns = c.width / font_size;
-let drops = [];
-for(let x = 0; x < columns; x++) drops[x] = 1;
-
-function draw(){
-  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-  ctx.fillRect(0, 0, c.width, c.height);
-  ctx.fillStyle = "#00ffff";
-  ctx.font = font_size + "px monospace";
-  for(let i = 0; i < drops.length; i++){
-    let text = chars[Math.floor(Math.random()*chars.length)];
-    ctx.fillText(text, i*font_size, drops[i]*font_size);
-    if(drops[i]*font_size > c.height && Math.random() > 0.975)
-      drops[i] = 0;
-    drops[i]++;
-  }
-}
-setInterval(draw, 50);
-
-/* ===== AOS Init ===== */
-AOS.init({ duration: 900, once: true });
-</script>
+  <!-- Подвал -->
+  <footer class="bg-blue-600 text-white py-6 text-center">
+    <p>© 2025 Invest in Kids. Все права защищены.</p>
+    <p class="text-sm opacity-80">Создано с ❤ для будущего поколений.</p>
+  </footer>
 </body>
 </html>
