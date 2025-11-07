@@ -4,59 +4,144 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Invest in Kids | Образовательный центр</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Курсы английского, программирования и искусственного интеллекта для детей и подростков в Казахстане. Онлайн и офлайн обучение. Invest in Kids — готовим будущее поколение!" />
   <link rel="icon" href="img/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 
-<body class="bg-white text-gray-800">
+<body class="font-sans text-gray-800">
+
   <!-- Навигация -->
-  <header class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
-    <nav class="container mx-auto flex items-center justify-between px-4 py-3">
-      <a href="index.html" class="text-2xl font-bold text-blue-600">Invest in Kids</a>
-      <ul class="hidden md:flex space-x-6 text-gray-700 font-medium">
-        <li><a href="index.html" class="hover:text-blue-600">Главная</a></li>
-        <li><a href="about.html" class="hover:text-blue-600">О нас</a></li>
-        <li><a href="courses.html" class="hover:text-blue-600">Курсы</a></li>
-        <li><a href="pricing.html" class="hover:text-blue-600">Прайс</a></li>
-        <li><a href="contact.html" class="hover:text-blue-600">Контакты</a></li>
+  <header class="fixed w-full bg-white shadow-md z-50">
+    <nav class="container mx-auto flex justify-between items-center px-4 py-3">
+      <a href="#home" class="flex items-center space-x-2">
+        <img src="img/logo.png" alt="Invest in Kids" class="h-8 w-8">
+        <span class="text-2xl font-bold text-blue-600">Invest in Kids</span>
+      </a>
+      <ul class="hidden md:flex space-x-6 font-medium">
+        <li><a href="#home" class="hover:text-blue-600">Главная</a></li>
+        <li><a href="#about" class="hover:text-blue-600">О нас</a></li>
+        <li><a href="#courses" class="hover:text-blue-600">Курсы</a></li>
+        <li><a href="#pricing" class="hover:text-blue-600">Прайс</a></li>
+        <li><a href="#contact" class="hover:text-blue-600">Контакты</a></li>
       </ul>
-      <a href="contact.html" class="hidden md:inline-block bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition">Записаться</a>
+      <a href="#contact" class="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition">Записаться</a>
     </nav>
   </header>
 
-  <!-- Главный баннер -->
-  <section class="h-screen bg-cover bg-center flex items-center justify-center text-center"
+  <!-- Главная секция -->
+  <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-center" 
            style="background-image: url('img/hero.jpg');">
-    <div class="bg-black bg-opacity-50 text-white p-10 rounded-lg">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Развиваем будущее с Invest in Kids</h1>
-      <p class="text-lg md:text-xl mb-6">Английский, программирование, искусственный интеллект и креативное обучение для детей и подростков</p>
-      <a href="courses.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition">Посмотреть курсы</a>
+    <div class="bg-black bg-opacity-50 text-white p-10 rounded-lg max-w-2xl">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Будущее начинается здесь</h1>
+      <p class="text-lg md:text-xl mb-6">Английский, программирование и искусственный интеллект для детей и подростков</p>
+      <a href="#courses" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md transition">Наши курсы</a>
     </div>
   </section>
 
-  <!-- О центре -->
-  <section class="py-20 bg-gray-50" id="about">
+  <!-- О нас -->
+  <section id="about" class="py-20 bg-gray-50">
     <div class="container mx-auto px-6 text-center md:text-left">
-      <h2 class="text-3xl font-bold text-blue-600 mb-6 text-center">О нашем центре</h2>
+      <h2 class="text-3xl font-bold text-blue-600 mb-8 text-center">О центре Invest in Kids</h2>
       <div class="md:flex items-center justify-center gap-10">
         <img src="img/classroom.jpg" alt="Invest in Kids" class="rounded-lg shadow-lg w-full md:w-1/2 mb-6 md:mb-0" />
         <div class="md:w-1/2">
           <p class="text-lg mb-4 leading-relaxed">
-            Invest in Kids — это современный образовательный центр, который помогает детям и подросткам изучать английский язык, программирование, робототехнику и искусственный интеллект.
+            Invest in Kids — это образовательный центр нового поколения, который помогает детям изучать английский, программирование, робототехнику и искусственный интеллект.
           </p>
           <p class="text-lg mb-6 leading-relaxed">
-            Мы создаём инновационные курсы, которые готовят детей к будущему, развивают креативность, критическое мышление и уверенность в себе.
+            Мы объединяем инновации и заботу о каждом ученике, чтобы раскрыть потенциал и подготовить их к будущим профессиям.
           </p>
-          <a href="about.html" class="bg-blue-600 text-white px-5 py-3 rounded-md font-medium hover:bg-blue-700 transition">Подробнее</a>
+          <a href="#courses" class="bg-blue-600 text-white px-5 py-3 rounded-md font-medium hover:bg-blue-700 transition">Подробнее</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Курсы -->
+  <section id="courses" class="py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-blue-600 mb-10 text-center">Наши направления</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-3">Английский язык</h3>
+          <p class="mb-4 text-gray-600">Общий, разговорный, IELTS и SAT-подготовка с опытными преподавателями.</p>
+          <a href="#pricing" class="text-blue-600 font-semibold hover:underline">Подробнее →</a>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-3">Программирование и робототехника</h3>
+          <p class="mb-4 text-gray-600">Python, LEGO EV3, Arduino и основы логики для детей и подростков.</p>
+          <a href="#pricing" class="text-blue-600 font-semibold hover:underline">Подробнее →</a>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-3">Искусственный интеллект и NoCode</h3>
+          <p class="mb-4 text-gray-600">Создание проектов без кода, автоматизация и нейросети для начинающих.</p>
+          <a href="#pricing" class="text-blue-600 font-semibold hover:underline">Подробнее →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Прайс -->
+  <section id="pricing" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-blue-600 mb-10 text-center">Стоимость обучения</h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white rounded-lg shadow-md">
+          <thead>
+            <tr class="bg-blue-600 text-white text-left">
+              <th class="py-3 px-5">Курс</th>
+              <th class="py-3 px-5">Формат</th>
+              <th class="py-3 px-5">Длительность</th>
+              <th class="py-3 px-5">Цена</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="py-3 px-5">Английский язык</td>
+              <td class="py-3 px-5">Групповой / Онлайн</td>
+              <td class="py-3 px-5">1 месяц</td>
+              <td class="py-3 px-5 text-blue-600 font-semibold">от 25 000 ₸</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-3 px-5">IELTS / SAT</td>
+              <td class="py-3 px-5">Групповой / Индивидуальный</td>
+              <td class="py-3 px-5">3 месяца</td>
+              <td class="py-3 px-5 text-blue-600 font-semibold">от 50 000 ₸</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-5">AI + NoCode</td>
+              <td class="py-3 px-5">Групповой</td>
+              <td class="py-3 px-5">1 модуль (4 недели)</td>
+              <td class="py-3 px-5 text-blue-600 font-semibold">от 40 000 ₸</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contact" class="py-20">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-blue-600 mb-6">Контакты</h2>
+      <p class="text-lg mb-2">📍 Астана, Казахстан</p>
+      <p class="text-lg mb-2">📞 <a href="https://wa.me/77000000000" class="text-blue-600 hover:underline">+7 700 000 0000</a></p>
+      <p class="text-lg mb-6">📧 <a href="mailto:info@investinkids.kz" class="text-blue-600 hover:underline">info@investinkids.kz</a></p>
+      <a href="https://instagram.com/investinkids" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">Instagram</a>
+    </div>
+  </section>
+
   <!-- Подвал -->
   <footer class="bg-blue-600 text-white py-6 text-center">
-    <p>© 2025 Invest in Kids. Все права защищены.</p>
-    <p class="text-sm opacity-80">Создано с ❤ для будущего поколений.</p>
+    <p>© 2025 Invest in Kids | Все права защищены</p>
+    <p class="text-sm opacity-80">Создано с ❤ для будущего Казахстана</p>
   </footer>
+
 </body>
 </html>
