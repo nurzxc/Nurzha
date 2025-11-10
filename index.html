@@ -237,18 +237,16 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
 .contacts .info {
   display: flex;
   justify-content: center;
-  gap: 60px;
-  flex-wrap: wrap;
-  text-align: left;
-  margin: auto;
+  align-items: flex-start;
+  gap: 50px;
+  flex-wrap: nowrap; /* Не переносить */
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .contact-box {
-  flex: 0 0 380px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.1);
-  padding: 25px 30px;
+  flex: 1;
+  min-width: 300px;
 }
 
 /* Плашка "Хит продаж" */
@@ -266,27 +264,38 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
   font-size: 0.9rem;
 }
 
-/* Чтобы карточки поддерживали позиционирование */
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
 .card {
-  position: relative;
-}
-  
-.tag {
-  animation: slideDown 0.7s ease;
-}
-
-@keyframes slideDown {
-  from {
-    transform: translate(-50%, -20px);
-    opacity: 0;
-  }
-  to {
-    transform: translate(-50%, 0);
-    opacity: 1;
-  }
+  width: 260px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
 }
 
-  
+.card:hover {
+  transform: translateY(-6px);
+}
+
+ .promo-box {
+  text-align: center;
+  padding: 30px 25px;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid #e63946;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(230,57,70,0.4);
+}
+ 
 </style>
 </head>
 
@@ -314,10 +323,13 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
     </div>
     <div class="hero-right">
       <div class="promo-box">
-        <h3>Запишитесь на пробный урок</h3>
-        <div class="promo-price"><span>5000 ₸</span><b>БЕСПЛАТНО</b></div>
-        <button class="promo-btn" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Успеть на акцию</button>
-      </div>
+  <h3 style="color:white; margin-bottom:10px;">Запишитесь на пробный урок</h3>
+  <div class="promo-price" style="margin-top:10px;">
+    <span style="text-decoration: line-through; color:#ff4b4b; font-size:1.4rem;">5000 ₸</span>
+    <b style="color:#e63946; font-size:2rem; margin-left:8px;">БЕСПЛАТНО</b>
+  </div>
+  <button class="promo-btn" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})" style="margin-top:18px;">🔥 Успеть на акцию</button>
+</div>
     </div>
   </div>
 </section>
