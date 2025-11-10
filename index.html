@@ -96,6 +96,14 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
   margin: 0 auto;
   justify-items: center;
 }
+  
+.card {
+  min-height: 450px; /* ← увеличивает высоту карточки */
+}
+
+.cards {
+  align-items: stretch;
+}
 
 .card {
   position: relative;
@@ -235,11 +243,8 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
 .contacts .info {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   gap: 50px;
-  flex-wrap: nowrap; /* Не переносить */
-  max-width: 900px;
-  margin: 0 auto;
+  flex-wrap: wrap; /* если экран маленький, блоки встанут один под другим */
 }
 
 .contact-box {
@@ -377,7 +382,7 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
           </div>
           
           <div class="card">
-  <div class="tag">Хит продаж</div>
+  <div class="tag">Популярный курс</div>
   <h3>AI + English</h3>
             <p class="price">84 900 ₸</p>
             <p class="old-price">139 900 ₸</p>
@@ -390,7 +395,7 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
           </div>
 
          <div class="card">
-  <div class="tag">Хит продаж</div>
+  <div class="tag">Рекомендуем</div>
   <h3>AI + English</h3>
   <p class="price">99 900 ₸</p>
   <p class="old-price">169 900 ₸</p>
@@ -437,7 +442,10 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
     <div class="contact-box">
       <h3>📍 Офис</h3>
       <p>Астана, Сыганак 4</p>
-      <p><a href="https://2gis.kz/astana" target="_blank">Посмотреть в 2GIS</a></p>
+     <a href="https://2gis.kz/astana/geo/70000001087013430"_blank">
+  📍 Посмотреть на карте 2GIS
+</a>
+
     </div>
 
     <div class="contact-box">
@@ -465,8 +473,8 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
 
 <footer><p>© 2025 Invest in Kids | Все права защищены</p></footer>
 
-<a href="https://wa.me/77081486845" target="_blank" class="whatsapp-btn">
-  <img src="img/whatsapp.png" alt="WhatsApp" class="icon"> Онлайн менеджер
+<a href="https://wa.me/77478980843" target="_blank" class="whatsapp-btn">
+  <img src="img/whatsapp.jpg" alt="WhatsApp" class="icon"> Онлайн менеджер
 </a>
 
 <script>
@@ -495,7 +503,7 @@ document.addEventListener("DOMContentLoaded", function() {
     slides[current].classList.remove("active");
     current = (current + 1) % slides.length;
     slides[current].classList.add("active");
-  }, 10000);
+  }, 7000);
 });
 </script>
 </body>
