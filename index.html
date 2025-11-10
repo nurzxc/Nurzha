@@ -205,23 +205,21 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
 
 .contacts .info {
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
   justify-content: center;
-  text-align: left;
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+  align-items: flex-start;
+  gap: 80px; /* расстояние между блоками */
+  flex-wrap: nowrap;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .contact-box {
+  flex: 1;
+  min-width: 300px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   padding: 25px;
-  flex: 1;
-  min-width: 280px;
-  max-width: 400px;
 }
 
 .contact-box a {
@@ -287,14 +285,15 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
   transform: translateY(-6px);
 }
 
- .promo-box {
-  text-align: center;
-  padding: 30px 25px;
-  background: rgba(255,255,255,0.1);
-  border: 2px solid #e63946;
+.promo-box {
+  background: rgba(0,128,0,0.2);
+  border: 2px solid #16a34a;
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(230,57,70,0.4);
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(22,163,74,0.4);
+  text-align: center;
 }
+
  
 </style>
 </head>
@@ -323,12 +322,12 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
     </div>
     <div class="hero-right">
       <div class="promo-box">
-  <h3 style="color:white; margin-bottom:10px;">Запишитесь на пробный урок</h3>
-  <div class="promo-price" style="margin-top:10px;">
-    <span style="text-decoration: line-through; color:#ff4b4b; font-size:1.4rem;">5000 ₸</span>
-    <b style="color:#e63946; font-size:2rem; margin-left:8px;">БЕСПЛАТНО</b>
+  <h3 style="color:white;">Запишитесь на пробный урок</h3>
+  <div class="promo-price" style="margin:10px 0;">
+    <span style="text-decoration: line-through; color:#e63946; font-size:1.4rem;">5000 ₸</span>
+    <b style="color:#e63946; font-size:2rem; margin-left:6px;">БЕСПЛАТНО</b>
   </div>
-  <button class="promo-btn" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})" style="margin-top:18px;">🔥 Успеть на акцию</button>
+  <button class="promo-btn" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">🔥 Успеть на акцию</button>
 </div>
     </div>
   </div>
@@ -496,7 +495,7 @@ document.addEventListener("DOMContentLoaded", function() {
     slides[current].classList.remove("active");
     current = (current + 1) % slides.length;
     slides[current].classList.add("active");
-  }, 3000);
+  }, 10000);
 });
 </script>
 </body>
