@@ -149,13 +149,17 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
 }
 
 .discount {
-  background: #16a34a;
+  background: #e63946;
   color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 0.9rem;
   display: inline-block;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  margin: 10px 0;
+  margin-top: 10px;
+  box-shadow: 0 3px 10px rgba(230,57,70,0.3);
+}
+
 }
 
 .features {
@@ -228,6 +232,61 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
 .contact-box a:hover {
   color: #0c7a3b;
 }
+
+/* Контакты в две колонки */
+.contacts .info {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  text-align: left;
+  margin: auto;
+}
+
+.contact-box {
+  flex: 0 0 380px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  padding: 25px 30px;
+}
+
+/* Плашка "Хит продаж" */
+.tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #16a34a, #00c853);
+  color: white;
+  font-weight: 600;
+  padding: 5px 16px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  font-size: 0.9rem;
+}
+
+/* Чтобы карточки поддерживали позиционирование */
+.card {
+  position: relative;
+}
+  
+.tag {
+  animation: slideDown 0.7s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+  
 </style>
 </head>
 
@@ -280,8 +339,9 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
       <div class="slide">
         <div class="cards">
 
-          <div class="card">
-            <h3>General English</h3>
+       <div class="card">
+  <div class="tag">Хит продаж</div>
+  <h3>AI + English</h3>
             <p class="price">33 900 ₸ / мес</p>
             <p class="old-price">49 900 ₸</p>
             <p class="discount">−40%</p>
@@ -292,8 +352,9 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
             <button onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Записаться</button>
           </div>
 
-          <div class="card">
-            <h3>IELTS</h3>
+        <div class="card">
+  <div class="tag">Хит продаж</div>
+  <h3>AI + English</h3>
             <p class="price">89 900 ₸</p>
             <p class="old-price">139 900 ₸</p>
             <p class="discount">−40%</p>
@@ -303,9 +364,10 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
             </ul>
             <button onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Записаться</button>
           </div>
-
+          
           <div class="card">
-            <h3>Индивидуально</h3>
+  <div class="tag">Хит продаж</div>
+  <h3>AI + English</h3>
             <p class="price">84 900 ₸</p>
             <p class="old-price">139 900 ₸</p>
             <p class="discount">−40%</p>
@@ -316,15 +378,16 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
             <button onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Записаться</button>
           </div>
 
-          <div class="card">
-            <h3>AI + English</h3>
-            <p class="price">99 900 ₸</p>
-            <p class="old-price">159 900 ₸</p>
-            <p class="discount">−40%</p>
-            <ul class="features">
-              <li>AI + английский</li>
-              <li>Сертификаты</li>
-            </ul>
+         <div class="card">
+  <div class="tag">Хит продаж</div>
+  <h3>AI + English</h3>
+  <p class="price">99 900 ₸</p>
+  <p class="old-price">169 900 ₸</p>
+  <p class="discount">-40%</p>
+  <ul>
+    <li>AI + английский</li>
+    <li>Сертификаты</li>
+       </ul>
             <button onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Записаться</button>
           </div>
 
