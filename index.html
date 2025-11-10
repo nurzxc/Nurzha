@@ -7,35 +7,38 @@
 <link rel="icon" href="img/logo.jpg">
 
 <style>
-html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;color:#222;background:#fff;}
-header{position:fixed;top:0;left:0;width:100%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.1);z-index:1000;}
-nav{display:flex;align-items:center;justify-content:space-between;padding:15px 5%;}
-nav ul{list-style:none;display:flex;gap:20px;margin:0;padding:0;}
-nav a{text-decoration:none;color:#065f46;font-weight:600;transition:.3s;}
-nav a:hover{color:#16a34a;}.cta-btn{background:#16a34a;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;transition:.3s;}
-.cta-btn:hover{background:#065f46;}
-#home{height:100vh;background:url('img/banner.jpg') center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;position:relative;}
-#home::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45);}
-.hero-content{position:relative;z-index:2;max-width:1200px;width:90%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;}
-.hero-left{flex:1;min-width:280px;}
-.hero-right{flex:1;min-width:300px;display:flex;justify-content:center;}
-.hero-left h1{font-size:3rem;margin-bottom:10px;}
-.hero-left p{font-size:1.2rem;margin-bottom:25px;}
-.promo-box{background:rgba(255,255,255,.1);border:2px dashed #fff;padding:30px;border-radius:15px;text-align:center;backdrop-filter:blur(5px);}
-.promo-box h3{margin:0 0 10px 0;font-size:1.3rem;}
-.promo-price{font-size:2rem;color:#9fff80;font-weight:700;}
-.promo-price span{text-decoration:line-through;opacity:.8;margin-right:10px;}
-.blink{animation:blink 1s infinite alternate;}@keyframes blink{from{opacity:1}to{opacity:.4}}
-.promo-btn{background:#9fff80;color:#065f46;padding:12px 24px;font-weight:700;border:none;border-radius:6px;cursor:pointer;margin-top:10px;}
-.promo-btn:hover{background:#fff;}
-section{padding:100px 0;}h2{text-align:center;color:#065f46;margin-bottom:40px;font-size:2rem;}
-.about{display:flex;flex-wrap:wrap;align-items:center;gap:40px;width:90%;max-width:1200px;margin:auto;}
-.about img{width:100%;max-width:500px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1);}
-.about-text{flex:1;font-size:1.1rem;line-height:1.6;}
-.courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;width:90%;max-width:1200px;margin:auto;}
-.course{background:#fff;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:30px;transition:.3s;text-align:center;}
-.course:hover{transform:translateY(-5px);}
-.course h3{color:#065f46;margin-bottom:10px;}
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Inter, Arial, sans-serif; color: #222; background: #fff; }
+
+header { position: fixed; top: 0; left: 0; width: 100%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.1); z-index: 1000; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 15px 5%; }
+nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
+nav a { text-decoration: none; color: #065f46; font-weight: 600; transition: .3s; }
+nav a:hover { color: #16a34a; }
+.cta-btn { background: #16a34a; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: .3s; }
+.cta-btn:hover { background: #065f46; }
+
+#home { height: 100vh; background: url('img/banner.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; color: #fff; position: relative; }
+#home::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.45); }
+
+.hero-content { position: relative; z-index: 2; max-width: 1200px; width: 90%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.hero-left { flex: 1; min-width: 280px; }
+.hero-right { flex: 1; min-width: 300px; display: flex; justify-content: center; }
+.hero-left h1 { font-size: 3rem; margin-bottom: 10px; }
+.hero-left p { font-size: 1.2rem; margin-bottom: 25px; }
+.promo-box { background: rgba(255,255,255,.1); border: 2px dashed #fff; padding: 30px; border-radius: 15px; text-align: center; backdrop-filter: blur(5px); }
+.promo-price { font-size: 2rem; color: #9fff80; font-weight: 700; }
+
+section { padding: 100px 0; }
+h2 { text-align: center; color: #065f46; margin-bottom: 40px; font-size: 2rem; }
+
+/* О нас */
+.about { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; width: 90%; max-width: 1200px; margin: auto; }
+.about img { width: 100%; max-width: 500px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+.about-text { flex: 1; font-size: 1.1rem; line-height: 1.6; }
+
+/* Слайдер фото */
+#invest-photos { text-align: center; margin: 40px 0; }
 #invest-photos .slider img {
   width: 80%;
   max-width: 600px;
@@ -46,39 +49,21 @@ section{padding:100px 0;}h2{text-align:center;color:#065f46;margin-bottom:40px;f
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
-.card{background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1);padding:25px;text-align:center;transition:.3s;}
-.card:hover{transform:translateY(-5px);}
-.card h3{background:#16a34a;color:#fff;padding:10px;border-radius:8px;margin:-25px -25px 15px;}
-.price{font-size:1.6rem;font-weight:700;color:#065f46;}
-.old-price{text-decoration:line-through;color:#888;font-size:.9rem;}
-.discount{color:#16a34a;font-weight:600;}
-.features{text-align:left;margin:15px 0;}
-.features li{margin:6px 0;}
-.card button{background:#16a34a;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:600;}
-.card button:hover{background:#065f46;}
-.free-lesson{background:#16a34a;color:#fff;text-align:center;padding:80px 20px;}
-.photo-slider{position:relative;max-width:1200px;margin:auto;overflow:hidden;}
-.review {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
+#invest-photos .slider img.active { display: block; }
 
-.review img {
-  width: 280px;
-  border-radius: 10px;
-  object-fit: cover;
-}
-form{background:#fff;max-width:600px;margin:40px auto;padding:40px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1);}
-form label{display:block;font-weight:600;color:#065f46;margin-bottom:6px;}
-form input,form textarea{width:100%;padding:12px;margin-bottom:20px;border:1px solid #ccc;border-radius:8px;font-size:1rem;}
-form button{background:#16a34a;color:#fff;border:none;padding:12px 30px;border-radius:6px;font-size:1rem;font-weight:600;cursor:pointer;}
-form button:hover{background:#065f46;}
-.success{text-align:center;margin-top:10px;color:#16a34a;font-weight:600;}
-footer{background:#065f46;color:#fff;text-align:center;padding:25px 10px;}
+/* Отзывы */
+.review { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; align-items: flex-start; }
+.review img { width: 280px; border-radius: 10px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,.2); }
+
+/* Форма */
+form { background: #fff; max-width: 600px; margin: 40px auto; padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+form label { display: block; font-weight: 600; color: #065f46; margin-bottom: 6px; }
+form input, form textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+form button { background: #16a34a; color: #fff; border: none; padding: 12px 30px; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+form button:hover { background: #065f46; }
+.success { text-align: center; margin-top: 10px; color: #16a34a; font-weight: 600; }
+
+/* Кнопка WhatsApp */
 .whatsapp-btn {
   position: fixed;
   bottom: 25px;
@@ -92,41 +77,60 @@ footer{background:#065f46;color:#fff;text-align:center;padding:25px 10px;}
   text-decoration: none;
   font-weight: bold;
   font-size: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   z-index: 2000;
   transition: all 0.3s ease;
 }
+.whatsapp-btn:hover { background-color: #1DA851; transform: translateY(-3px); }
+.whatsapp-btn .icon { width: 22px; height: 22px; margin-right: 8px; }
 
-.whatsapp-btn:hover {
-  background-color: #1DA851;
-  transform: translateY(-3px);
-}
-
-.whatsapp-btn .icon {
-  width: 22px;
-  height: 22px;
-  margin-right: 8px;
-}
+footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10px; }
 </style>
 </head>
 
 <body>
-<header><nav><a href="#home"><strong>Invest in Kids</strong></a><ul><li><a href="#home">Главная</a></li><li><a href="#about">О нас</a></li><li><a href="#courses">Курсы</a></li><li><a href="#pricing">Цены</a></li><li><a href="#contact">Контакты</a></li></ul><a href="#contact" class="cta-btn">Записаться</a></nav></header>
+<header>
+  <nav>
+    <a href="#home"><strong>Invest in Kids</strong></a>
+    <ul>
+      <li><a href="#home">Главная</a></li>
+      <li><a href="#about">О нас</a></li>
+      <li><a href="#courses">Курсы</a></li>
+      <li><a href="#invest-photos">Фото</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+    <a href="#contact" class="cta-btn">Записаться</a>
+  </nav>
+</header>
 
 <section id="home">
-<div class="hero-content">
-<div class="hero-left"><h1>Будущее начинается здесь</h1><p>Английский, программирование и искусственный интеллект для детей и подростков</p><a href="#courses" class="cta-btn">Посмотреть курсы</a></div>
-<div class="hero-right"><div class="promo-box"><h3>Запишитесь на пробный урок</h3><div class="promo-price"><span>5000 ₸</span><b class="blink">БЕСПЛАТНО</b></div><button class="promo-btn" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Успеть на акцию</button></div></div>
-</div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <h1>Будущее начинается здесь</h1>
+      <p>Английский, программирование и искусственный интеллект для детей и подростков</p>
+      <a href="#courses" class="cta-btn">Посмотреть курсы</a>
+    </div>
+    <div class="hero-right">
+      <div class="promo-box">
+        <h3>Запишитесь на пробный урок</h3>
+        <div class="promo-price"><span>5000 ₸</span><b>БЕСПЛАТНО</b></div>
+        <button class="promo-btn" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Успеть на акцию</button>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="about"><div class="about"><img src="img/classroom.jpg" alt=""><div class="about-text"><h2>О нашем центре</h2><p>Invest in Kids — современный образовательный центр, объединяющий детей и технологии. Мы обучаем навыкам будущего и вдохновляем на достижения.</p></div></div></section>
+<section id="about">
+  <div class="about">
+    <img src="img/classroom.jpg" alt="">
+    <div class="about-text">
+      <h2>О нашем центре</h2>
+      <p>Invest in Kids — современный образовательный центр, объединяющий детей и технологии. Мы обучаем навыкам будущего и вдохновляем на достижения.</p>
+    </div>
+  </div>
+</section>
 
-<section id="courses"><h2>Наши курсы</h2><div class="courses"><div class="course"><h3>Английский язык</h3><p>IELTS, SAT и разговорный английский для детей и подростков.</p></div><div class="course"><h3>Программирование и робототехника</h3><p>Python, LEGO EV3, Arduino и логика.</p></div><div class="course"><h3>AI и NoCode</h3><p>Создание проектов с искусственным интеллектом и платформами без кода.</p></div></div></section>
-
-<section id="pricing"><h2>Стоимость обучения</h2>…</section>
-
-<section id="invest-photos" class="section">
+<section id="invest-photos">
   <h2>Invest in Kids в фотографиях</h2>
   <div class="slider">
     <img src="img/photo1.jpg" class="active" alt="Фото 1">
@@ -136,17 +140,24 @@ footer{background:#065f46;color:#fff;text-align:center;padding:25px 10px;}
   </div>
 </section>
 
-<section id="reviews"><h2>Отзывы о нас</h2><div class="review-slider"><div class="review"><img src="img/review1.jpg"><img src="img/review2.jpg"><img src="img/review3.jpg"></div></div></section>
+<section id="reviews">
+  <h2>Отзывы о нас</h2>
+  <div class="review">
+    <img src="img/review1.jpg" alt="Отзыв 1">
+    <img src="img/review2.jpg" alt="Отзыв 2">
+    <img src="img/review3.jpg" alt="Отзыв 3">
+  </div>
+</section>
 
 <section id="contact">
   <h2>Оставить заявку</h2>
   <form id="contactForm">
     <label>Имя</label>
-    <input type="text" name="name" required>
+    <input type="text" name="entry.2005620554" required>
     <label>Телефон</label>
-    <input type="tel" name="phone" required>
+    <input type="tel" name="entry.1045781291" required>
     <label>Комментарий</label>
-    <textarea name="comment"></textarea>
+    <textarea name="entry.839337160"></textarea>
     <button type="submit">Отправить</button>
     <p id="msg" class="success"></p>
   </form>
@@ -155,16 +166,15 @@ footer{background:#065f46;color:#fff;text-align:center;padding:25px 10px;}
 <footer><p>© 2025 Invest in Kids | Все права защищены</p></footer>
 
 <a href="https://wa.me/77081486845" target="_blank" class="whatsapp-btn">
-  <img src="img/whatsapp.png" alt="WhatsApp" class="icon">
-  Онлайн менеджер
+  <img src="img/whatsapp.png" alt="WhatsApp" class="icon"> Онлайн менеджер
 </a>
 
 <script>
-// --- форма в Google Sheets ---
+/* Отправка формы в Google Sheets */
 document.getElementById("contactForm").addEventListener("submit", e => {
   e.preventDefault();
   const form = e.target;
-  fetch("https://forms.gle/UgorWbHJ5kmKYnQH7", {
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLSeVjpbMMSrFRiBNe1zOit4duKUzWWgCQ75uMuqMnRL7R3d7oA/formResponse", {
     method: "POST",
     body: new FormData(form),
     mode: "no-cors"
@@ -176,7 +186,7 @@ document.getElementById("contactForm").addEventListener("submit", e => {
   });
 });
 
-// --- слайдер фотографий ---
+/* Слайдер фото */
 document.addEventListener("DOMContentLoaded", function() {
   const slides = document.querySelectorAll("#invest-photos .slider img");
   let current = 0;
