@@ -86,77 +86,147 @@ form button:hover { background: #065f46; }
 
 footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10px; }
 
-/* ----- Карточки с ценами ----- */
+/* ----- Улучшенный дизайн карточек цен ----- */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  gap: 30px;
   width: 90%;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   justify-items: center;
 }
 
 .card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.1);
-  padding: 25px;
+  position: relative;
+  background: linear-gradient(145deg, #ffffff, #f3f9f4);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 30px 20px 45px;
   text-align: center;
-  transition: transform 0.3s;
-  width: 260px;
+  transition: all 0.3s ease;
+  width: 270px;
+  border-top: 4px solid #16a34a;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 5px;
+  background: linear-gradient(90deg, #16a34a, #9fff80);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(22, 163, 74, 0.2);
 }
 
 .card h3 {
   color: #065f46;
+  font-size: 1.4rem;
   margin-bottom: 10px;
+  font-weight: 700;
 }
 
 .price {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #065f46;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #16a34a;
 }
 
 .old-price {
   text-decoration: line-through;
-  color: #888;
+  color: #999;
   font-size: 0.9rem;
 }
 
 .discount {
-  color: #16a34a;
-  font-weight: 600;
+  background: #16a34a;
+  color: #fff;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin: 10px 0;
 }
 
 .features {
   text-align: left;
-  list-style-type: none;
+  list-style: none;
+  margin: 20px 0;
   padding: 0;
-  margin: 10px 0 20px;
 }
 
 .features li {
-  margin: 5px 0;
+  margin: 8px 0;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+  padding-left: 20px;
+}
+
+.features li::before {
+  content: "✔";
+  color: #16a34a;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
 }
 
 .card button {
-  background: #16a34a;
+  background: linear-gradient(90deg, #16a34a, #0d8048);
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
   font-weight: 600;
-  transition: background 0.3s;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.3);
 }
 
 .card button:hover {
-  background: #065f46;
+  background: linear-gradient(90deg, #0b6339, #16a34a);
+  transform: scale(1.05);
+}
+
+.contacts .info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  text-align: left;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.contact-box {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+  padding: 25px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+}
+
+.contact-box a {
+  color: #16a34a;
+  text-decoration: none;
+  font-weight: 600;
+}
+.contact-box a:hover {
+  color: #0c7a3b;
 }
 </style>
 </head>
@@ -282,7 +352,26 @@ footer { background: #065f46; color: #fff; text-align: center; padding: 25px 10p
     <img src="img/review3.jpg" alt="Отзыв 3">
   </div>
 </section>
+  
+<!-- ====== Контакты ====== -->
+<section id="contacts">
+  <h2>Контакты</h2>
+  <div class="contacts info">
+    <div class="contact-box">
+      <h3>📍 Офис</h3>
+      <p>Астана, Сыганак 4</p>
+      <p><a href="https://2gis.kz/astana" target="_blank">Посмотреть в 2GIS</a></p>
+    </div>
 
+    <div class="contact-box">
+      <h3>📞 Связаться</h3>
+      <p><a href="https://wa.me/77081486845" target="_blank">+7 708 148 6845</a></p>
+      <p><a href="mailto:aessenaliyeva@gmail.com">aessenaliyeva@gmail.com</a></p>
+      <p><a href="https://www.instagram.com/investinkidskz" target="_blank">@investinkidskz</a></p>
+    </div>
+  </div>
+</section>
+  
 <section id="contact">
   <h2>Оставить заявку</h2>
   <form id="contactForm">
